@@ -1,12 +1,10 @@
 /* eslint-disable @next/next/no-page-custom-font */
-import "./styles/globals.scss";
-import "./styles/markdown.scss";
-import "./styles/highlight.scss";
-import { getClientConfig } from "./config/client";
 import type { Metadata, Viewport } from "next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { getClientConfig } from "./config/client";
 import { getServerSideConfig } from "./config/server";
-import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
+import "./styles/globals.scss";
+import "./styles/highlight.scss";
+import "./styles/markdown.scss";
 const serverConfig = getServerSideConfig();
 
 export const metadata: Metadata = {
@@ -50,21 +48,21 @@ export default function RootLayout({
       </head>
       <body>
         {children}
-        {serverConfig?.isVercel && (
+        {/* {serverConfig?.isVercel && (
           <>
             <SpeedInsights />
           </>
-        )}
-        {serverConfig?.gtmId && (
+        )} */}
+        {/* {serverConfig?.gtmId && (
           <>
             <GoogleTagManager gtmId={serverConfig.gtmId} />
           </>
-        )}
-        {serverConfig?.gaId && (
+        )} */}
+        {/* {serverConfig?.gaId && (
           <>
             <GoogleAnalytics gaId={serverConfig.gaId} />
           </>
-        )}
+        )} */}
       </body>
     </html>
   );
