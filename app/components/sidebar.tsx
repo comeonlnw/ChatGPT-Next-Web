@@ -23,6 +23,12 @@ import { isIOS, useMobileScreen } from "../utils";
 import dynamic from "next/dynamic";
 import clsx from "clsx";
 
+const DISCOVERY = [
+  { name: Locale.Plugin.Name, path: Path.Plugins },
+  { name: "Stable Diffusion", path: Path.Sd },
+  { name: Locale.SearchChat.Page.Title, path: Path.SearchChat },
+];
+
 const ChatList = dynamic(async () => (await import("./chat-list")).ChatList, {
   loading: () => null,
 });
@@ -210,7 +216,7 @@ export function SideBarTail(props: {
 export function SideBar(props: { className?: string }) {
   useHotKey();
   const { onDragStart, shouldNarrow } = useDragSideBar();
-  const [showPluginSelector, setShowPluginSelector] = useState(false);
+  const [showDiscoverySelector, setshowDiscoverySelector] = useState(false);
   const navigate = useNavigate();
   const config = useAppConfig();
   const chatStore = useChatStore();
